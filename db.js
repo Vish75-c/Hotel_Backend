@@ -1,6 +1,11 @@
 //basic template for connecting mongodb database with the node js
 import mongoose from "mongoose";
-mongoose.connect('mongodb://localhost:27017/hotels',{
+import dotenv from "dotenv";
+dotenv.config({
+    path:"./.env"
+})
+const url=process.env.Mongo_URL;
+mongoose.connect("mongodb+srv://vishgola191:Atlas123@cluster0.azzcxju.mongodb.net/",{
     useNewUrlParser:true,
     useUnifiedTopology:true
 });

@@ -6,6 +6,8 @@ const MenuRouter=Router();
 MenuRouter.post('/',async (req,res)=>{
     try{
         const item=req.body;
+        const check=await menuModel.findOne(item);
+        if(check)res.status(400).json({error:"Items already present in the menu card"});
         const added=new menuModel(item);
         const response=await added.save();
         console.log('Menu item saved');
