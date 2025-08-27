@@ -1,0 +1,18 @@
+import express from "express";
+import db from "./db.js";
+
+import { urlencoded } from "express";
+import PersonRouter from "./routes/person.js";
+import MenuRouter from "./routes/list.js";
+const app=express();
+app.use(express.json());
+app.use(express.urlencoded());
+
+
+app.use('/menu',MenuRouter);
+app.use('/person',PersonRouter);
+app.listen(3000,function(err){
+    if(err)console.log("Server Not running")
+    else console.log("Server is Running");
+})
+
